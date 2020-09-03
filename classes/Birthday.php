@@ -173,7 +173,7 @@ class Birthday
 		$this->setBackgroundImage('happybday_wallpaper');
 
 		if (empty($allBirthdays)) {
-			$this->setBackgroundImage('noBirthday');
+			$this->setBackgroundImage('nobirthday');
 			$allBirthdays = FALSE;
 		}
 
