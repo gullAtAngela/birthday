@@ -35,25 +35,21 @@
  */
 
 /**
- * Hash Generator
+ * Birthday
  *
- * Hiermit kann ein beliebiger Wert als Hash umgewandelt werden. Die
- * Funktionsweis ist so aufgebaut, dass eine CSV bestehend aus zwei
- * Spalten hochgeladen werden kann und dann in eine neue Datei
- * bestehend aus dem Hash Wert abgespeichert wird.
  */
 class Birthday
 {
 
 	private $importDir = "import/";
 	private $fileMode = 'r';
+	private $importFilename = "birthday.csv";
 	public $bgImage;
 
 	
 	public function __construct()
 	{
 		$this->setImportPath();
-		//$this->setBackgroundImage('happybday_wallpaper');
 	}
 
 	/**
@@ -76,6 +72,16 @@ class Birthday
 	public function setImportDir($importDir)
 	{
 		$this->importDir = $importDir;
+	}
+
+	public function setImportFileName($filename)
+	{
+		$this->filename = $filename;
+	}
+
+	public function getImportFileName()
+	{
+		return $this->importFilename;
 	}
 
 	/**
@@ -121,10 +127,10 @@ class Birthday
 	 *         	Der enstprechende Dateiname für die Importdatei.
 	 *			Default ist birthday.csv.
 	 */
-	public function setImportPath($filename = 'birthday.csv')
+	public function setImportPath()
 	{
-		if ($filename) {
-			$this->importPath = $this->getImportDir() . $filename;
+		if ($this->getImportFileName()) {
+			$this->importPath = $this->getImportDir() . $this->getImportFileName();
 		}
 	}
 
@@ -138,7 +144,7 @@ class Birthday
 		return $this->bgImage;
 	}
 
-	private function readFileContent($filename = 'birthday.csv')
+	private function readFileContent()
 	{	
 		$file = fopen($this->getImportPath(), $this->getFileMode());
 		$content = fread($file, filesize($this->getImportPath()));
