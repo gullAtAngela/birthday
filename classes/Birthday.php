@@ -139,6 +139,7 @@ class Birthday
 		$this->bgImage = 'img/' . $path . '.jpg';
 	}
 
+
 	public function getBackgroundImage()
 	{
 		return $this->bgImage;
@@ -220,6 +221,10 @@ class Birthday
 		return $output;
 	}
 
+	/**
+	 * Rendert die ganze Ausgabe der einzelnen Geburtstagskinder mit einem entsprechenden Hintergrundbild.
+	 * Das gleicher geschieht wenn kein Geburtstag vorhanden ist.
+	 */
 	public function render()
 	{
 		$result = $this->getAllBirthdays();
