@@ -1,0 +1,14 @@
+# GIT FTP INCLUDE
+
+# With .git-ftp-include can you set files or directories that are included for
+# uploading to the remote system.
+# Even they are not set up in git.
+
+# User specific entries
+
+# development specific entries
+!dist/
+
+# production specific entries
+
+# testing specific entries

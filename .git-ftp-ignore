@@ -1,0 +1,36 @@
+# GIT FTP IGNORE
+
+# With .git-ftp-ignore can you set files or directories that are excluded from
+# uploading to the remote system.
+# For example, ignoring everything in a directory named config:
+config/*
+
+# Ignoring all files having extension .txt:
+*.txt
+
+# Ignoring a single file called foobar.txt:
+foobar.txt
+
+# general entries
+*.DS_Store
+*.sublime-project
+*.sublime-workspace
+npm-debug.log
+git-ftp/*
+.git-ftp.log
+gulpfile.babel.js
+
+# User specific entries
+
+# development specific entries
+toDo.md
+colorMatchingTable.md
+src/*
+man/*
+patch/*
+resources/*
+
+
+# production specific entries
+
+# testing specific entries

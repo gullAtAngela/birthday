@@ -1,0 +1,43 @@
+# GIT IGNORE
+
+# With .gitignore can you set files or directories that are excluded from the
+# versioning. You can also set a .gitignore in any directory you want. It
+# applies then for all the files and paths inside this direcotry. Its usefull
+# when you habe some specific extensions.
+
+# Directories need the trailing slash "/"
+# Important to know is when you use a simple path like man/, it will be ignored
+# anywhere in all subdirectories. For the ecaxt path it needs to start from the
+# root with a begining slash like /man/. The glob-syntax is also allowed.
+# With *. you can define file extensions or any file in a folder to be excluded.
+# The opposite of this syntax is defined with the exlamation mark "!" as
+# !demo.bak. This specific file will be included.
+
+# general entries
+*.DS_Store
+*.swp
+.cache
+.idea
+*.sublime-project
+*.sublime-workspace
+node_modules
+npm-debug.log
+bower_components
+dist
+/man/
+/git-ftp/
+/patch/
+
+# User specific entries
+.htaccess
+!/.htaccess
+img/
+css/
+import/
+
+# development specific entries
+toDo.md
+colorMatchingTable.md
+# production specific entries
+sitemap.xml
+# testing specific entries
