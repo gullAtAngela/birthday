@@ -177,10 +177,10 @@ class Birthday
 				}
 			}
 		}
-		$this->setBackgroundImage('happybday_wallpaper');
+		$this->setBackgroundImage('happybday');
 
 		if (empty($allBirthdays)) {
-			$this->setBackgroundImage('nobirthday');
+			$this->setBackgroundImage('nobday');
 			$allBirthdays = FALSE;
 		}
 
