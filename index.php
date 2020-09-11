@@ -16,13 +16,13 @@ $list->getAllBirthdays();
 </head>
 <body style="background-image: url('<?php echo $list->getBackgroundImage() ?>')">
 	<div class="grid-container">
-		<div class="grid-x grid-padding-x">
+		<!-- <div class="grid-x grid-padding-x">
 			<div class="small-3 cell float-left">
 				<header>
 					<img src="img/AB_Logo_Rot_rgb.png" alt="Logo Angela Bruderer" class="logo">
 				</header>
 			</div>
-		</div>
+		</div> -->
 		<div class="grid-x grid-padding-x">
 			<div class="small-12 cell">
 				<div class="innerWrapper">

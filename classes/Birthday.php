@@ -230,7 +230,7 @@ class Birthday
 		$result = $this->getAllBirthdays();
 
 		if ($result) {
-			echo "<h3>Herzlichen Glückwunsch!</h3>";
+			//echo "<h3>Herzlichen Glückwunsch!</h3>";
 			foreach ($result as $birthday) {
 				echo $birthday;
 			}

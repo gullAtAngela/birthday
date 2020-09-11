@@ -48,9 +48,10 @@ p {
 
 .innerWrapper {
 	position: absolute;
-	top: 50px;
-	left: 50%;
+	top: 560px;
+	left: 5%;
 	right: 0;
+	float: left;
 }
 
 .birthdayListing {
@@ -61,17 +62,17 @@ p {
 	display: block;
 	font-size: 2em;
 	line-height: 1em;
-	color: #1d74d1;
+	color: rgb(32, 61, 141);
 }
 
 .firstname,
 .lastname {
 	display: inline-block;
-	font-size: 4.5em;
+	font-size: 8.125em;
 	line-height: 1em;
 	margin-bottom: 1.4%;
 	font-family: 'Caveat', cursive;
-	color: #1d74d1;
+	color: rgb(32, 61, 141);
 }
 
 .firstname {
@@ -80,10 +81,11 @@ p {
 
 .nobirthday {
 	display: inline-block;
-	font-size: 3.5em;
+	font-size: 6em;
 	line-height: 1em;
 	font-family: 'Caveat', cursive;
-	color: #1d74d1;
+	color: rgba(25, 25, 112, 1);
+}
 }
 
 /*------------------------------------------------------------------------------
