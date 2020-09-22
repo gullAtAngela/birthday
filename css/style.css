@@ -72,7 +72,8 @@ p {
 	font-size: 8.125em;
 	line-height: 1em;
 	margin-bottom: 1.4%;
-	font-family: 'Caveat', cursive;
+    font-family: Calibri;
+    font-weight: 800;
 	color: rgb(32, 61, 141);
 }
 
@@ -84,7 +85,8 @@ p {
 	display: inline-block;
 	font-size: 6em;
 	line-height: 1em;
-	font-family: 'Caveat', cursive;
+    font-family: Calibri;
+    font-weight: 800;
 	color: rgba(25, 25, 112, 1);
 }
 }

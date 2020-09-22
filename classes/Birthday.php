@@ -235,7 +235,7 @@ class Birthday
 				echo $birthday;
 			}
 		} else {
-			echo '<span class="nobirthday"> Heute gibt es leider keinen Geburtstag zu feiern.</span>';
+			//echo '<span class="nobirthday"> Heute gibt es leider keinen Geburtstag zu feiern.</span>';
 		}
 	}
 }
