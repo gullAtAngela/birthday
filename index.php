@@ -16,7 +16,7 @@ $i = 5;
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<title>Geburtstage bei Angela Bruderer</title>
 </head>
-<body style="background-image: url('<?php echo $list->getBackgroundImage() ?>') width="1920px" height="1080px">
+<body style="background-image: url('<?php echo $list->getBackgroundImage() ?>')" width="1920px" height="1080px">
 	<div class="grid-container">
 		<!-- <div class="grid-x grid-padding-x">
 			<div class="small-3 cell float-left">
