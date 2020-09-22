@@ -177,7 +177,7 @@ class Birthday
 				}
 			}
 		}
-		$this->setBackgroundImage('happybday');
+		$this->setBackgroundImage('geburtstag');
 
 		if (empty($allBirthdays)) {
 			$this->setBackgroundImage('nobday');

@@ -17,8 +17,9 @@ body {
 	position: relative;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 1em;
-	background-size: cover;
-	background-repeat: no-repeat;
+    background-repeat: no-repeat;
+    width: 1920px;
+    height: 1080px;
 }
 
 header {
