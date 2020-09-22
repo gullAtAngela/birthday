@@ -4,6 +4,8 @@ error_reporting(E_ALL);
 ini_set('display_errors', '1');
 $list = new Birthday();
 $list->getAllBirthdays();
+
+$i = 5;
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +16,7 @@ $list->getAllBirthdays();
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<title>Geburtstage bei Angela Bruderer</title>
 </head>
-<body style="background-image: url('<?php echo $list->getBackgroundImage() ?>')">
+<body style="background-image: url('<?php echo $list->getBackgroundImage() ?>') width="1920px" height="1080px">
 	<div class="grid-container">
 		<!-- <div class="grid-x grid-padding-x">
 			<div class="small-3 cell float-left">

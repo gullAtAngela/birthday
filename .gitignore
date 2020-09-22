@@ -38,6 +38,7 @@ import/
 # development specific entries
 toDo.md
 colorMatchingTable.md
+.vscode
 # production specific entries
 sitemap.xml
 # testing specific entries
