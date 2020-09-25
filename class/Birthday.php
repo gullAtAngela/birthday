@@ -1,6 +1,6 @@
 <?php
 /**
- * Hash Generator
+ * Birthday
  *
  * This file is part of the Framie Framework.
  *
@@ -34,135 +34,14 @@
  * @link		https://bitbucket.org/gulldesign/framie
  */
 
-/**
- * Birthday
- *
- */
 class Birthday
 {
-
-	private $importDir = "import/";
-	private $fileMode = 'r';
-	private $importFilename = "birthday.csv";
+	public $filehandler;
 	public $bgImage;
 
-	
 	public function __construct()
 	{
-		$this->setImportPath();
-	}
-
-	/**
-	 * Gibt das Import Verzeichnis zurück.
-	 *
-	 * @return 	string
-	 *         	Gibt das definierte Import Verzeichnis zurück. Default ist import/.
-	 */
-	public function getImportDir()
-	{
-		return $this->importDir;
-	}
-
-	/**
-	 * Setzt ein neues Import Verzeichnis.
-	 *
-	 * @param 	string $importDir
-	 *         	Das neu definierte Import Verzeichnis.
-	 */
-	public function setImportDir($importDir)
-	{
-		$this->importDir = $importDir;
-	}
-
-	public function setImportFileName($filename)
-	{
-		$this->filename = $filename;
-	}
-
-	public function getImportFileName()
-	{
-		return $this->importFilename;
-	}
-
-	/**
-	 * Holt sich den definierten File Handle Mode.
-	 *
-	 * @return 	string
-	 *         	FileMode für die unterschiedlichen Dateihandler Methoden.
-	 *			Default is readable.
-	 */
-	public function getFileMode()
-	{
-		return $this->fileMode;
-	}
-
-	/**
-	 * Damit kann ein neuer File Handle Mode definiert werden. Um festzulegen
-	 * wie eine Datei geöffnet werden soll. Lese- oder Schreibmodus.
-	 *
-	 * @param 	string $mode
-	 *         	Definition des entsprechenden File Handle Modus.
-	 */
-	public function setFileMode($mode)
-	{
-		$this->fileMode = $mode;
-	}
-
-	/**
-	 * Gibt den ganzen Import Pfad zurück.
-	 *
-	 * @return 	string
-	 *         	Gibt den definierte Import Pfad zurück.
-	 */
-	public function getImportPath()
-	{
-		return $this->importPath;
-	}
-
-	/**
-	 * Setzt einen neuen Import Pfad basierend auf dem ImportDir und dem 
-	 * eingestellten Dateinamen. Die Tiefe kann damit frei definiert werden.
-	 *
-	 * @param 	string $filename
-	 *         	Der enstprechende Dateiname für die Importdatei.
-	 *			Default ist birthday.csv.
-	 */
-	public function setImportPath()
-	{
-		if ($this->getImportFileName()) {
-			$this->importPath = $this->getImportDir() . $this->getImportFileName();
-		}
-	}
-
-	public function setBackgroundImage($path)
-	{
-		$this->bgImage = 'img/' . $path . '.jpg';
-	}
-
-
-	public function getBackgroundImage()
-	{
-		return $this->bgImage;
-	}
-
-	private function readFileContent()
-	{	
-		$file = fopen($this->getImportPath(), $this->getFileMode());
-		$content = fread($file, filesize($this->getImportPath()));
-		$lines = explode(PHP_EOL, $content);
-		return $lines;
-	}
-	
-	private function readCSV()
-	{
-		$file = fopen($this->getImportPath(), $this->getFileMode());
-		
-		$datas = array();
-		while (($data = fgetcsv($file, 0, ";")) !== FALSE) {
-			$datas[] = $data;
-		}
-
-		return $datas;
+		$this->filehandler = new Filehandler();
 	}
 
 	/**
@@ -178,19 +57,17 @@ class Birthday
 	 */
 	public function getAllBirthdays()
 	{
-		$lines = $this->readCSV();
-
+		$lines = $this->filehandler->readCSV();
 		for ($i = 0; $i < count($lines); $i++) {
 			if (!empty($lines[$i])) {
 				list($firstname, $lastname, $birthdate) = $lines[$i];
 				if ($this->compareBirthdayWithToday($birthdate) != FALSE) {
-					$allBirthdays[] = $this->listTodaysBirthday($birthdate, $firstname, $lastname); 
+					$allBirthdays[] = $this->listTodaysBirthday($firstname, $lastname); 
 				}
 			}
 		}
 	
 		$this->setBackgroundImage('geburtstag');
-
 		if (empty($allBirthdays)) {
 			$this->setBackgroundImage('nobday');
 			$allBirthdays = FALSE;
@@ -215,8 +92,7 @@ class Birthday
 	 */
 	private function compareBirthdayWithToday($bday, $strippedMode = TRUE)
 	{
-		$today = date('d.m');
-
+		$today = date('d.m'); 
 		if ($strippedMode) {
 			$bday = substr($bday, 0, 5);
 		}
@@ -224,10 +100,9 @@ class Birthday
 		return ($bday == $today) ? TRUE : FALSE;
 	}
 
-	private function listTodaysBirthday($birthdate, $firstname, $lastname)
+	private function listTodaysBirthday($firstname, $lastname)
 	{
-		$output  = '<span class="birthday"> </span>';
-		$output .= '<span class="firstname">' . $firstname . '</span>';
+		$output = '<span class="firstname">' . $firstname . '</span>';
 		$output .= '<span class="lastname">' . $lastname . '</span>';
 
 		return $output;
@@ -240,14 +115,20 @@ class Birthday
 	public function render()
 	{
 		$result = $this->getAllBirthdays();
-
 		if ($result) {
-			//echo "<h3>Herzlichen Glückwunsch!</h3>";
 			foreach ($result as $birthday) {
 				echo $birthday;
 			}
-		} else {
-			//echo '<span class="nobirthday"> Heute gibt es leider keinen Geburtstag zu feiern.</span>';
 		}
+	}
+
+	public function getBackgroundImage()
+	{
+		return $this->bgImage;
+	}
+
+	public function setBackgroundImage($path)
+	{
+		$this->bgImage = 'img/' . $path . '.jpg';
 	}
 }

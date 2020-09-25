@@ -1,9 +1,8 @@
 <?php
-include_once 'classes/Birthday.php';
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
-$list = new Birthday();
-$list->getAllBirthdays();
+include_once 'inc/init.inc.php';
+include_once 'inc/__autoload.php';
+$birthdays = new Birthday();
+$birthdays->getAllBirthdays();
 ?>
 
 <!DOCTYPE html>
@@ -12,23 +11,13 @@ $list->getAllBirthdays();
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<title>Geburtstage bei Angela Bruderer</title>
 </head>
-<body style="background-image: url('<?php echo $list->getBackgroundImage() ?>')" width="1920px" height="1080px">
+<body style="background-image: url('<?php echo $birthdays->getBackgroundImage() ?>')" width="1920px" height="1080px">
 	<div class="grid-container">
-		<!-- <div class="grid-x grid-padding-x">
-			<div class="small-3 cell float-left">
-				<header>
-					<img src="img/AB_Logo_Rot_rgb.png" alt="Logo Angela Bruderer" class="logo">
-				</header>
-			</div>
-		</div> -->
 		<div class="grid-x grid-padding-x">
 			<div class="small-12 cell">
 				<div class="innerWrapper">
-					<?php	
-						echo $list->render();
-					?>
+					<?php echo $birthdays->render(); ?>
 				</div>
-
 			</div>
 		</div>
 	</div>
