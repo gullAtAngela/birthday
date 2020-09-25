@@ -150,8 +150,19 @@ class Birthday
 		$file = fopen($this->getImportPath(), $this->getFileMode());
 		$content = fread($file, filesize($this->getImportPath()));
 		$lines = explode(PHP_EOL, $content);
-
 		return $lines;
+	}
+	
+	private function readCSV()
+	{
+		$file = fopen($this->getImportPath(), $this->getFileMode());
+		
+		$datas = array();
+		while (($data = fgetcsv($file, 0, ";")) !== FALSE) {
+			$datas[] = $data;
+		}
+
+		return $datas;
 	}
 
 	/**
@@ -167,16 +178,17 @@ class Birthday
 	 */
 	public function getAllBirthdays()
 	{
-		$lines = $this->readFileContent();
+		$lines = $this->readCSV();
 
-		for ($i = 1; $i < count($lines); $i++) {
+		for ($i = 0; $i < count($lines); $i++) {
 			if (!empty($lines[$i])) {
-				list($firstname, $lastname, $birthdate) = explode(";", $lines[$i]);
+				list($firstname, $lastname, $birthdate) = $lines[$i];
 				if ($this->compareBirthdayWithToday($birthdate) != FALSE) {
 					$allBirthdays[] = $this->listTodaysBirthday($birthdate, $firstname, $lastname); 
 				}
 			}
 		}
+	
 		$this->setBackgroundImage('geburtstag');
 
 		if (empty($allBirthdays)) {
