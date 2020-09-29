@@ -99,11 +99,12 @@ class Birthday
 
 		return ($bday == $today) ? TRUE : FALSE;
 	}
-
-	private function listTodaysBirthday($firstname, $lastname)
+    
+    private function listTodaysBirthday($firstname, $lastname)
 	{
-		$output = '<span class="firstname">' . $firstname . '</span>';
-		$output .= '<span class="lastname">' . $lastname . '</span>';
+        $output = '<span class="person">';
+		$output .= $firstname . ' ' . $lastname;
+		$output .= '</span>';
 
 		return $output;
 	}
